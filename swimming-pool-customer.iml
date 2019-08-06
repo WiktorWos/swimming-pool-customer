@@ -24,5 +24,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.22" level="application_server_libraries" />
     <orderEntry type="library" name="mysql-connector-java-8.0.17" level="project" />
+    <orderEntry type="library" name="javax.el-3.0.1-b09" level="project" />
+    <orderEntry type="library" name="hibernate-validator-6.0.17.Final" level="project" />
   </component>
 </module>

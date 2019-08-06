@@ -1,6 +1,9 @@
 package com.poolcustomer.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -12,7 +15,10 @@ public class Customer {
     private int id;
 
     @Column(name = "box_number")
-    private int boxNumber;
+    @NotNull(message = "Insert the value")
+    @Min(value = 1, message = "Box numbers starts from 1")
+    @Max(value = 200, message = "The maximum number is 200")
+    private Integer boxNumber;
 
     @Column(name = "ticket")
     private String ticket;
@@ -31,11 +37,11 @@ public class Customer {
         this.id = id;
     }
 
-    public int getBoxNumber() {
+    public Integer getBoxNumber() {
         return boxNumber;
     }
 
-    public void setBoxNumber(int boxNumber) {
+    public void setBoxNumber(Integer boxNumber) {
         this.boxNumber = boxNumber;
     }
 
