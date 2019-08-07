@@ -31,9 +31,9 @@
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/swimming_pool_customer?useSSL=false&amp;serverTimezone=UTC" />
-        <property name="user" value="springstudent" />
-        <property name="password" value="springstudent" /> 
+        <property name="jdbcUrl" value="jdbc:mysql://db4free.net:3306/springmvc123?useSSL=false&amp;serverTimezone=UTC" />
+        <property name="user" value="springmvctest" />
+        <property name="password" value="springmvctest" />
 
 
         <property name="minPoolSize" value="5" />
@@ -68,6 +68,8 @@
 	</bean>
 
 	<mvc:resources mapping="/resources/**" location="/resources/"/>
+
+
 
 </beans>
 
