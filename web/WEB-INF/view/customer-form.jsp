@@ -21,7 +21,7 @@
     <div id="container">
         <form:form action="saveCustomer" method="post" modelAttribute="customer">
             <form:hidden path="id"/>
-            <%--<form:hidden path="start"/>--%>
+
 
             <table>
                 <tbody>

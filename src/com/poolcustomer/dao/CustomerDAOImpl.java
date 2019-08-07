@@ -29,8 +29,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     public void saveCustomer(Customer customer) {
         Session session = sessionFactory.getCurrentSession();
         Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        dateFormat.format(date);
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        dateFormat.format(date);
         customer.setStart(date);
         session.saveOrUpdate(customer);
     }
@@ -48,12 +48,22 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public void boxIsEmpty(Customer customer, BindingResult bindingResult) {
+    public boolean boxIsEmpty(Customer customer, BindingResult bindingResult) {
         Session session = sessionFactory.getCurrentSession();
         Query<Customer> query = session.createQuery("from Customer c where c.boxNumber=:customerBoxNumber",Customer.class);
         query.setParameter("customerBoxNumber",customer.getBoxNumber());
-        if(!query.getResultList().isEmpty()) {
-            bindingResult.addError(new ObjectError("boxNotEmpty","Box is already used"));
+        return query.getResultList().isEmpty();
+    }
+
+    @Override
+    public Customer getCustomerForCheckout(int boxNumber) {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Customer> query = session.createQuery("from Customer c where c.boxNumber =: boxNumber");
+        query.setParameter("boxNumber",boxNumber);
+        if(query.getResultList().isEmpty()) {
+            return null;
+        } else {
+            return query.getSingleResult();
         }
     }
 }

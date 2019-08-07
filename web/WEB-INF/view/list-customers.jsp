@@ -23,6 +23,15 @@
             </div>
 
         </div>
+
+        <div class="sideBySide" id="outsideCheckoutDiv">
+            <div id="insideCheckoutDiv">
+                <input type="button" value="Checkout"
+                       onclick="window.location.href='showCheckout'; return false;"
+                       class="add-button"/>
+            </div>
+
+        </div>
         <div style="clear: both;"></div>
     </div>
 </div>
@@ -44,13 +53,17 @@
                 <c:url var="deleteLink" value="/poolCustomer/deleteCustomer">
                     <c:param name="id" value="${customer.id}"/>
                 </c:url>
+                <c:url var="checkoutLink" value="/poolCustomer/showCheckoutFromId">
+                    <c:param name="id" value="${customer.id}"/>
+                </c:url>
                 <tr>
                     <td>${customer.boxNumber}</td>
                     <td>${customer.ticket}</td>
-                    <td>${customer.start.toString()}</td>
+                    <td>${dateFormat.format(customer.start)}</td>
                     <td><a href="${updateLink}" class="button">Update</a>
                         <a href="${deleteLink}" class="button"
                            onclick="if(!(confirm('Are you sure you want to delete this customer'))) return false">Delete</a>
+                        <a href="${checkoutLink}" class="button">Checkout</a>
                     </td>
                 </tr>
 

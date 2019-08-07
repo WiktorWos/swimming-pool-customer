@@ -9,6 +9,7 @@ public interface CustomerDAO {
     public List<Customer> getCustomers();
     public void saveCustomer(Customer customer);
     public Customer getCustomer(int id);
+    public Customer getCustomerForCheckout(int boxNumber);
     public void deleteCustomer(int id);
-    public void boxIsEmpty(Customer customer, BindingResult bindingResult);
+    public boolean boxIsEmpty(Customer customer, BindingResult bindingResult);
 }

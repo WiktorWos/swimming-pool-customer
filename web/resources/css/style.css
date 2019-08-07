@@ -55,6 +55,21 @@ tr:nth-child(odd) {background: #FFFFFF}
 	transform: translate(-50%, -50%);
 }
 
+#outsideCheckoutDiv {
+	position: relative;
+	height: 43px;
+	width: 120px;
+}
+
+#insideCheckoutDiv {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
 .add-button {
 	border: 1px solid #666; 
 	border-radius: 5px; 

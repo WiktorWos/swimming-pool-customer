@@ -41,7 +41,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public void boxIsEmpty(Customer customer, BindingResult bindingResult) {
-        customerDAO.boxIsEmpty(customer,bindingResult);
+    public boolean boxIsEmpty(Customer customer, BindingResult bindingResult) {
+        return customerDAO.boxIsEmpty(customer,bindingResult);
+    }
+
+    @Override
+    @Transactional
+    public Customer getCustomerForCheckout(int boxNumber) {
+        return customerDAO.getCustomerForCheckout(boxNumber);
     }
 }
