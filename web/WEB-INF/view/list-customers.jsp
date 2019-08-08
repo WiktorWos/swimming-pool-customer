@@ -6,7 +6,7 @@
     <title>Customers</title>
     <link type="text/css"
         rel="stylesheet"
-        href="${pageContext.request.contextPath}/resources/css/style.css">
+        href="${pageContext.request.contextPath}/resources/css/style.css"/>
 </head>
 <body>
 <div id="wrapper">
@@ -24,14 +24,25 @@
 
         </div>
 
-        <div class="sideBySide" id="outsideCheckoutDiv">
-            <div id="insideCheckoutDiv">
+
+
+        <div class="outsideCheckoutDiv" id="outsideCheckoutDiv" style="float: left;">
+            <div id="insideCheckoutDiv" class="insideCheckoutDiv">
+                <input type="button" value="History"
+                       onclick="window.location.href='history/showHistory'; return false;"
+                       class="add-button"/>
+            </div>
+        </div>
+
+        <div class="outsideCheckoutDiv" style="float: left;">
+            <div id="insideHistoryDiv" class="insideCheckoutDiv" >
                 <input type="button" value="Checkout"
                        onclick="window.location.href='showCheckout'; return false;"
                        class="add-button"/>
             </div>
 
         </div>
+
         <div style="clear: both;"></div>
     </div>
 </div>

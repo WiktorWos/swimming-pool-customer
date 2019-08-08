@@ -1,6 +1,8 @@
 package com.poolcustomer.controller;
 
 import com.poolcustomer.entity.Customer;
+import com.poolcustomer.entity.CustomerHistory;
+import com.poolcustomer.service.CustomerHistoryService;
 import com.poolcustomer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -23,6 +25,8 @@ public class CustomerController {
 
     @Autowired
     CustomerService customerService;
+    @Autowired
+    CustomerHistoryService customerHistoryService;
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
@@ -112,9 +116,9 @@ public class CustomerController {
 
             double charge;
             if(customer.getTicket().equals("Normal")) {
-                charge = diff * 0.002;
-            } else {
                 charge = diff * 0.003;
+            } else {
+                charge = diff * 0.002;
             }
 
             DecimalFormat decimalFormat = new DecimalFormat("####.##");
@@ -122,8 +126,13 @@ public class CustomerController {
 
             customerService.deleteCustomer(customer.getId());
 
+            CustomerHistory customerHistory =
+                    new CustomerHistory(customer.getBoxNumber(),customer.getTicket(),customer.getStart(),currentDate,charge);
+            customerHistoryService.saveCustomerHistory(customerHistory);
+
             return "customer-checkout-result";
         }
     }
+
 
 }

@@ -42,7 +42,10 @@
 
                 <tr>
                     <td><label>Confirm changes</label></td>
-                    <td><input type="submit" value="Save" class="save"/></td>
+                    <td><input type="submit" value="Save" class="save"/>
+                        <input type="button" value="Cancel" class="save"
+                               onclick="window.location.href='list'; return false;"/>
+                    </td>
                 </tr>
                 </tbody>
             </table>

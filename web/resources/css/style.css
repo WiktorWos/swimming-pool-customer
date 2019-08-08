@@ -55,13 +55,28 @@ tr:nth-child(odd) {background: #FFFFFF}
 	transform: translate(-50%, -50%);
 }
 
-#outsideCheckoutDiv {
+.outsideCheckoutDiv {
 	position: relative;
 	height: 43px;
 	width: 120px;
 }
 
-#insideCheckoutDiv {
+.insideCheckoutDiv {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#outsideHistoryDiv {
+	position: relative;
+	height: 43px;
+	width: 120px;
+}
+
+#insideHistoryDiv {
 	margin: 0;
 	position: absolute;
 	top: 50%;
