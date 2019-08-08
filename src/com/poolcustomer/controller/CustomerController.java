@@ -95,12 +95,12 @@ public class CustomerController {
     public String checkout(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult,
                            Model model) {
 
-        if(customerService.boxIsEmpty(customer,bindingResult)){
-            if(customer.getBoxNumber()>0 && customer.getBoxNumber()<201){
-                bindingResult.addError(new ObjectError("boxIsEmpty","Box was not used"));
-            }
+        if(customer.getBoxNumber() == null) {
+            return "customer-checkout";
         }
-
+        if(customerService.boxIsEmpty(customer,bindingResult) && customer.getBoxNumber()>0 && customer.getBoxNumber()<201){
+            bindingResult.addError(new ObjectError("boxIsEmpty","Box was not used"));
+        }
         if(bindingResult.hasErrors()){
             return "customer-checkout";
         } else {
